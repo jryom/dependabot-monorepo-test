@@ -1,0 +1,22 @@
+name: Generate dependabot.yml
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate dependabot.yml
+        uses: Makeshift/generate-dependabot-glob-action@v1.3.4
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "Generate dependabot.yml from template"
+          title: "Generate dependabot.yml from template"
+          body: ""
