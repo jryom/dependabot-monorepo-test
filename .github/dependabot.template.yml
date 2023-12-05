@@ -1,0 +1,31 @@
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "npm"
+    directory: "/npm"
+    schedule:
+      interval: "daily"
+    groups:
+      eslint:
+        patterns:
+          - "eslint"
+
+  - package-ecosystem: "docker"
+    directory: "**/*Dockerfile"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "terraform"
+    directory: "**/providers.tf"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "pip"
+    directory: "**/requirements.txt"
+    schedule:
+      interval: "weekly"
